@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify
 from pytrends.request import TrendReq
 
@@ -9,8 +10,10 @@ def get_trending_topics():
     pytrends = TrendReq(hl='en-US', tz=360)
     trending_searches_df = pytrends.trending_searches(pn='united_states')
     trending_topics = trending_searches_df[0].tolist()
-
+    
     return jsonify(trending_topics=trending_topics)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    # Use the PORT environment variable or default to 5000
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
