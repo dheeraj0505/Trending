@@ -14,7 +14,7 @@ def get_trending_topics():
     return jsonify(trending_topics=trending_topics)
 
 if __name__ == '__main__':
-    # Confirm the app is running and using the specified port
-    print("Starting the app on the specified port.")
-    port = int(os.environ.get("PORT", 5000))
+    # Print statement for debugging
+    print("Starting the app and binding to port.")
+    port = int(os.environ.get("PORT", 5000))  # Use PORT environment variable
     app.run(host='0.0.0.0', port=port)
